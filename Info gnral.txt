@@ -1,0 +1,128 @@
+Se utiliza para desarrollar aplicaciones desplegables en web, mobile web, native mobile, native desktop.
+
+Utiliza TypeScript -> basado en Js con muchas mejoras, a objetos, tipos, clases y mas cosas
+------------------------------------------------------------------------------------------------------
+Angular permite crear apliaciones tipo SPA (Single Page Aplication) - es un solo archivo HTML pero internamente
+pero se desplegan varios componentes que realizan diferentes cosas
+
+Se necesita CLI de node JS para trabajar con nodeJS
+------------------------------------------------------------------------------------------------------
+En el index.html aparece una cosa llamda <app-root></app-root> lo cual indica que es todo el contenido importado
+desde la carpeta app la cual contiene componentes, css y muchas cosas mas
+
+------------------------------------------------------------------------------------------------------
+dentro de app.components.ts se puede definir los componentes y su configuracion, por ejemplo en el index
+aparece <app-root></app-root> pero como sabe que es un componente, dentro del archivo especificado
+de hace rato si entras sale la siguiente config
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html', -> cual es el archivo del componente
+  styleUrls: ['./app.component.css'] -> el archivo css para darle estilo al componente
+})
+
+asi es como se especifica que cosa es un componente
+------------------------------------------------------------------------------------------------------
+dentro del archivo html del componente se puede acceder a atributos de la clase especificados en el
+component.ts, como por ejemplo el title, u otros mas, para poder mostrarlos en el html
+se utiliza la etiqueta de {{nombre atributo}} como en python
+------
+flujo de Angular, ¿Como inicia? dentro de main.ts, se especifica por medio de la siguiente linea:
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+
+aqui indica que el "AppModule" esta dentro de app, que este es un archivo llamado app.module.ts
+que es donde se importa la clase, dentro de este lo importante es lo de bootstrap
+lo cual indica que entra al componente de app.component.ts que es donde el decorador y la clase ya indica
+que jala primero
+y asi
+------------------------------------------------------------------------------------------------------
+para crear un componente manual
+
+import { Component } from "@angular/core"; -> importacion del decorador
+
+@Component({ -> info del decorador, el nombre y el url del contenido que mostrara
+    selector:'app-personas', -> nombre dentro del html <app-personas></app-personas>
+    templateUrl:'./personas.component.html', -> contenido a mostrar
+})
+
+export class PersonasComponent{ -> export de la clase, este puede incluir propiedades
+
+}
+
+despues se declara el componente dentro de AppModule en la parte del Ngmodule, en declarations
+@NgModule({
+  declarations: [
+    AppComponent,
+    PersonasComponent-> aqui se declara el nuevo componente
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+-------------------------------------
+net core y poco mas
+Modelo -> contiene una representacion de los datos que maneja el sistema, su business logic
+
+Vista -> es la interfaz de usuario que compone la info que se envia al cliente, y los mecanismos
+de interaccion con este
+
+Controladores -> actua como intermediario entre el modelo y la vista, gestiona el flujo de info
+----------
+DataContext -> hace de puente entre el codigo y la bd, es el origen de todas las entidades
+asignadas por la conexion a la bd
+
+Entity -> representacion de un objeto, una entidad valla
+
+Controllers -> es donde se declaran las nuevas apis para cada entidad en concreto
+
+API REST -> metodos que hacen cierta logica, ya sea inserciones, consultas, logins
+pero pueden ser consumidas por cualquier cliente web,movil o etc.. que entienda el metodo
+http mediante la ruta con su metodo debido.
+
+Linq (Language Integrated Query) -> es una sintaxis de consulta, se puede utilizar para trabajar con
+colecciones de datos, como si se trabajara con una base datos, trabaja con lambda 
+
+tiene varios metodos, select, where, first, last, order by, min, max, average etc...
+
+ORM ->un ORM te permite convertir los datos de tus objectos en un formato correcto
+para poder guardar la información en una base de datos (mapeo) creándose una 
+base de datos virtual donde los datos que se encuentran en nuestra aplicación,
+quedan vinculados a la base de datos (persistencia).
+
+DTO ->El patrón DTO tiene como finalidad de crear un objeto plano 
+con una serie de atributos que puedan ser enviados o recuperados del servidor
+en una sola invocación, de tal forma que un DTO puede contener información de múltiples
+fuentes o tablas y concentrarlas en una única clase simple.
+
+Entity Framework ->un ORM en las aplicaciones .NET. Este framework
+permite a los desarrolladores convertir sus estructuras de datos en clases
+para poder trabajar con esa información usando objetos de .NET,
+reduciendo considerablemente la cantidad de código que sería necesario para 
+realizar las tareas de acceso y gestión de datos en nuestra aplicación. 
+
+JWT -  JSON WEB TOKENS -> Estandar industrial para tokens, puede contener,
+Credenciales - Claims (reclamos) - otra info
+
+jwt -> envia credenciales -> server
+jwt <- valida credenciales y regresa un jwt <- server
+jwt -> envia un jwt para futuras solicitudes -> server
+jwt <- verifica jwt y regresa la respuesta <- server
+
+es basicamente un string largo separado por 3 puntos,
+parte 1: contiene el algoritmo para encriptar la 3ra parte, y el tipo
+parte 2: Payload! aqui se tiene toda la informacion de claims o credenciales, quien es el
+usuario, que rol tiene (cuando se dice claim(reclamo) se refiere a que el usuario reclama que o quien es)
+y ademas tiene 3 fechas, el nbf que es no se puede usar antes de, exp, expira tal fecha y salio tal fecha
+parte 3: la firma
+
+Interfaz -> como siempre, un contrato entre ella y la clase que la implementa, que es
+si o si tienes que utilizar esto porque si
+
+Extension methods -> permite agregar methos a tipos existentes sin modificar el tipo actual
+
+
+Static -> se refiere a que no se necesita hacer una instancia de la clase para usarla
+
