@@ -14,6 +14,7 @@ namespace API.DTOs
         [Required]
         public string Username { get; set; }
         [Required]
+        [StringLength(8,MinimumLength =4)]
         //[Phone] se puede utilizar expreciones regulares, o tipos ya hechos y asi
         public string password { get; set; }
     }
