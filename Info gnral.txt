@@ -76,7 +76,9 @@ asignadas por la conexion a la bd
 
 Entity -> representacion de un objeto, una entidad valla
 
-Controllers -> es donde se declaran las nuevas apis para cada entidad en concreto
+Controllers -> es donde se declaran las nuevas apis para cada entidad en concreto,
+son responsables de responder a las solicitudes realizadas en un sitio web de ASP.NET MVC.
+Cada solicitud del explorador se asigna a un controlador determinado.
 
 API REST -> metodos que hacen cierta logica, ya sea inserciones, consultas, logins
 pero pueden ser consumidas por cualquier cliente web,movil o etc.. que entienda el metodo
@@ -125,4 +127,60 @@ Extension methods -> permite agregar methos a tipos existentes sin modificar el 
 
 
 Static -> se refiere a que no se necesita hacer una instancia de la clase para usarla
+
+--------------------------
+Angular forms
+
+importas el modulo de formas al componente, una vez importado a una forma en tu html
+puedes ponerle la etiqueta #loginForm="ngForm" con esto, entiende que la form, es una angular form
+y aparte puedes agregarle (ngSubmit)='login()' a la form, esto indica una accion  o metodo
+que realizara una vez se haga el submit
+
+cuando se utiliza  () significa que va del componente a sus propiedades
+cuando se utiliza  [] significa que info de las propiedades
+cuando se utiliza  [()] significa que es de ambos, es 2 way binding
+
+2 way binding -> significa que puedes enviar datos o info desde las propiedades del componente
+y al mismo tiempo recibir informacion del html a las propiedades, por ejemplo ponerle a tu componente
+un input para username seria asi
+name="username" [(ngModel)]="model.username"}
+
+----------
+angular services
+
+son objetos "singleton?" insanciados solo una vez durante la vida util de la aplicacion,
+tienen metodos que contienen los datos durante la vida util de la app, es decir, los datos no se regrescan
+y se encuentran disponibles durante todo ese tiempo, el objetivo principal de los servicios es 
+organizar y compartir la logica de negocio, modelos o datos y fucniones a diferentes componentes de la app
+
+Un ejemplo de cuándo utilizar los servicios sería transferir datos de un controlador
+a otro servicio personalizado.
+
+import { Injectable } from '@angular/core';
+
+@Injectable({   -> este decorador indica que este servicio puede ser inyectado en otros componentes o aplicaciones
+  providedIn: 'root'
+})
+export class AccountService {
+
+  constructor() { }
+}
+
+---
+inyectar el servicio
+
+Observables - es un estandar para manejar datos de manera asincrona.
+son colecciones de multiples valores a lo largo tiempo
+piensa en los observables como un newsletter(boletin informativo, como adidas, nike y asi)
+* solo subscriptores al observable, pueden recibir la info
+* si nadie se suscribe al observable, no se hace nada (es perezoso)
+
+promise                         | observables
+provee un solo valor a futuro   | emite multiples valores a la vez
+no es  perezoso                 | se pueden cancelar
+no se puede cancelar            | se puede utilizar con map, filtros, reduce, y mas operadores
+----------
+RxJS reactive extensions with js
+
+  
 
