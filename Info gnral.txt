@@ -181,6 +181,20 @@ no es  perezoso                 | se pueden cancelar
 no se puede cancelar            | se puede utilizar con map, filtros, reduce, y mas operadores
 ----------
 RxJS reactive extensions with js
+------------------------------------------------------
+Repository
 
-  
+es una capa extra de abstraccion, la cual mucha gente dice que no es necesaria ya que el mismo dbcontext actua como este,
+pero es recomendable para encapsular la logica, por ejemplo
+el db context puede tener mas de mil metodos como por ejemplo:
+user.first()
+user.firstordefault()
+user.singleordefault()
+y asi... sin embargo el repositorio puede soportar 4 metodos para este ejemplo
+getUser()
+getUsers()
+updateUser()
+saveAll()
+y ya, asi de simple, ademas de reducir codigo, ya que si en 4 o 5 clases se ocupa consultar lo mismo del usuario, por ejemplo
+user.algo().condicion(x=>x.dato) y asi, solo utilizando el repositorio se obtendria un solo codigo y llamarlo en estas clases
 
