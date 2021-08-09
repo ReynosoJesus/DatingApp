@@ -12,34 +12,35 @@ import { MembersService } from 'src/app/_services/members.service';
   styleUrls: ['./members-edit.component.css']
 })
 export class MembersEditComponent implements OnInit {
-  @ViewChild('editForm') editForm!:NgForm;
+  @ViewChild('editForm') editForm!: NgForm;
   member!: Member;
   user: any;
-  @HostListener('window:beforeunload',['$event']) unloadNotification($event:any){
-    if(this.editForm.dirty){
-      $event.returnValue=true;
+  @HostListener('window:beforeunload', ['$event']) unloadNotification($event: any) {
+    if (this.editForm.dirty) {
+      $event.returnValue = true;
     }
   }
 
-  constructor(private accountService: AccountService, private memberService: MembersService,private toastr:ToastrService) {
+  constructor(private accountService: AccountService, private memberService: MembersService, private toastr: ToastrService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
   }
-  
+
 
   ngOnInit(): void {
     this.loadMember();
   }
 
-  loadMember(){
-    this.memberService.getMember(this.user.username).subscribe(member=>{
-      this.member=member;
+  loadMember() {
+    this.memberService.getMember(this.user.username).subscribe(member => {
+      this.member = member;
     })
   }
 
-  updateMember(){
-    console.log(this.member);
-    this.toastr.success("profile updates succesfully");
-    this.editForm.reset(this.member);
+  updateMember() {
+    this.memberService.updateMember(this.member).subscribe(() => {
+      this.toastr.success("profile updates succesfully");
+      this.editForm.reset(this.member);
+    })
   }
 
 }

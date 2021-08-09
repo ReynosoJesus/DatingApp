@@ -89,7 +89,7 @@ colecciones de datos, como si se trabajara con una base datos, trabaja con lambd
 
 tiene varios metodos, select, where, first, last, order by, min, max, average etc...
 
-ORM ->un ORM te permite convertir los datos de tus objectos en un formato correcto
+ORM ->un ORM te permite convertir los datos de tus objetos en un formato correcto
 para poder guardar la información en una base de datos (mapeo) creándose una 
 base de datos virtual donde los datos que se encuentran en nuestra aplicación,
 quedan vinculados a la base de datos (persistencia).
@@ -148,7 +148,7 @@ name="username" [(ngModel)]="model.username"}
 ----------
 angular services
 
-son objetos "singleton?" insanciados solo una vez durante la vida util de la aplicacion,
+son objetos "singleton?" instanciados solo una vez durante la vida util de la aplicacion,
 tienen metodos que contienen los datos durante la vida util de la app, es decir, los datos no se regrescan
 y se encuentran disponibles durante todo ese tiempo, el objetivo principal de los servicios es 
 organizar y compartir la logica de negocio, modelos o datos y fucniones a diferentes componentes de la app
