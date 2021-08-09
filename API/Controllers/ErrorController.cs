@@ -16,7 +16,7 @@ namespace API.Controllers
         [HttpGet("auth")]
         public ActionResult<string> GetSecret()
         {
-            return StatusCode(401,"SecretCore!");
+            return "SecretCore!";
         }
 
         [HttpGet("not-found")]
